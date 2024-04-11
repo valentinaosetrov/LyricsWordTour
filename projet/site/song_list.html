@@ -9,110 +9,111 @@
 		<script src="/static/song_list.js"></script>
 	</head>
 	<body>
-        <h2>kjfebjaheb</h2>
-        <form>
-            <!-- ici nous créons une fieldset pour chaque album -->
-            <fieldset id="debut" style="display:none;">
-                <!-- ici nous afficherons les chansons présentes dans la base de données -->
-                <ul>
-                    {% for song in songs %}
-                        {% if song.album == "Debut" %}
-                            <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </fieldset>
-            <fieldset id="fearless" style="display:none;">
-                <p>im fearless</p>
-                <ul>
-                    {% for song in songs %}
-                        {% if song.album == "Fearless" %}
-                            <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </fieldset>
-            <fieldset id="speaknow" style="display:none;">
-                <p>im speaknow</p>
-                <ul>
-                    {% for song in songs %}
-                        {% if song.album == "Speak Now" %}
-                            <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </fieldset>
-            <fieldset id="red" style="display:none;">
-                <p>im red</p>
-                <ul>
-                    {% for song in songs %}
-                        {% if song.album == "Red" %}
-                            <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </fieldset>
-            <fieldset id="1989" style="display:none;">
-                <p>im 1989</p>
-                <ul>
-                    {% for song in songs %}
-                        {% if song.album == "1989" %}
-                            <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </fieldset>
-            <fieldset id="reputation" style="display:none;">
-                <p>im reputation</p>
-                <ul>
-                    {% for song in songs %}
-                        {% if song.album == "Reputation" %}
-                            <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </fieldset>
-            <fieldset id="lover" style="display:none;">
-                <p>im lover</p>
-                <ul>
-                    {% for song in songs %}
-                        {% if song.album == "Lover" %}
-                            <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </fieldset>
-            <fieldset id="folklore" style="display:none;">
-                <p>im folklore</p>
-                <ul>
-                    {% for song in songs %}
-                        {% if song.album == "Folklore" %}
-                            <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </fieldset>
-            <fieldset id="evermore" style="display:none;">
-                <p>im evermore</p>
-                <ul>
-                    {% for song in songs %}
-                        {% if song.album == "Evermore" %}
-                            <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </fieldset>
-            <fieldset id="midnights" style="display:none;">
-                <p>im midnights</p>
-                <ul>
-                    {% for song in songs %}
-                        {% if song.album == "Midnights" %}
-                            <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </fieldset>
-            <button type="submit"></button>
-        </form>
+        <div class="container text-center">
+            <h2>Choose a song</h2>
+            <form action="/submit" method="post">
+                <!-- ici nous créons une fieldset pour chaque album -->
+                <fieldset id="debut" style="display:none;">
+                    <!-- ici nous afficherons les chansons présentes dans la base de données -->
+                    <ul>
+                        {% for song in songs %}
+                            {% if song.album == "Debut" %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <fieldset id="fearless" style="display:none;">
+                    <ul>
+                        {% for song in songs %}
+                            {% if song.album == "Fearless" %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <fieldset id="speaknow" style="display:none;">
+                    <p>im speaknow</p>
+                    <ul>
+                        {% for song in songs %}
+                            {% if song.album == "Speak Now" %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <fieldset id="red" style="display:none;">
+                    <p>im red</p>
+                    <ul>
+                        {% for song in songs %}
+                            {% if song.album == "Red" %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <fieldset id="1989" style="display:none;">
+                    <p>im 1989</p>
+                    <ul>
+                        {% for song in songs %}
+                            {% if song.album == "1989" %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <fieldset id="reputation" style="display:none;">
+                    <p>im reputation</p>
+                    <ul>
+                        {% for song in songs %}
+                            {% if song.album == "Reputation" %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <fieldset id="lover" style="display:none;">
+                    <p>im lover</p>
+                    <ul>
+                        {% for song in songs %}
+                            {% if song.album == "Lover" %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <fieldset id="folklore" style="display:none;">
+                    <p>im folklore</p>
+                    <ul>
+                        {% for song in songs %}
+                            {% if song.album == "Folklore" %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <fieldset id="evermore" style="display:none;">
+                    <p>im evermore</p>
+                    <ul>
+                        {% for song in songs %}
+                            {% if song.album == "Evermore" %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <fieldset id="midnights" style="display:none;">
+                    <p>im midnights</p>
+                    <ul>
+                        {% for song in songs %}
+                            {% if song.album == "Midnights" %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <button type="submit"></button>
+            </form>
+        </div>
     </body>
 </html>

@@ -56,17 +56,32 @@ async def root(request: Request):
 async def song_list(request: Request):
     return templates.TemplateResponse("song_list.html", {"songs": SONG_DATABASE, "request" : request})
 
+# @app.get("/lyrics", response_class=HTMLResponse)
+# async def song_list(request: Request):
+#     return templates.TemplateResponse("lyrics.html", {"songs": SONG_DATABASE, "request" : request})
+
+# Define the route to handle form submission
+@app.post("/submit")
+async def submit_form(request: Request, checkbox_value: str = Form(...)):
+    # Redirect to the lyrics.html page with the checkbox value
+    return RedirectResponse(url=f"/lyrics?checkbox_value={checkbox_value}")
+
+# Define the route to serve the lyrics page
+@app.get("/lyrics", response_class=HTMLResponse)
+async def show_lyrics(request: Request, checkbox_value: str):
+    return templates.TemplateResponse("lyrics.html", {"request": request, "checkbox_value": checkbox_value})
 
 # @app.get("/ajout-recette") #afficher les templates
 # async def ajout_recette(request: Request):
 #     return templates.TemplateResponse("ajouter_recette.html", {"request": request})
 
-# @app.post("/ajouter-recette", response_class=HTMLResponse) #modifier les templates
-# async def ajouter_recette(request: Request):
+# @app.post("/song_list", response_class=HTMLResponse) #modifier les templates
+# async def song_choice(request: Request):
 #     # On récupère les valeurs du formulaire
-#     form_data = await request.form()
-#     titre = form_data.get('titre') # valeur du champ name="titre" dans le formulaire HTML 
-#     type_recette = form_data.get('type_recette')
+#     # form_data = await request.form()
+#     # titre = form_data.get('title') # valeur du champ name="titre" dans le formulaire HTML 
+#     return RedirectResponse(url=f"/lyrics?checkbox_value={checkbox_value}")
+
 
 #     # On crée un nouvel objet Recette pour l'ajouter dans la base
 #     recette = Recette(nom=titre, type=type_recette)
@@ -74,4 +89,4 @@ async def song_list(request: Request):
 #     # On fait appel à la fonction extérieure pour gérer l'ajout dans la BDD
 #     util_ajouter_recette(recette)
 
-#     return templates.TemplateResponse("ajouter_recette.html", {"request": request})
+    # return templates.TemplateResponse("ajouter_recette.html", {"request": request})
