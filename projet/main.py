@@ -12,6 +12,9 @@ from pydantic import BaseModel
 from typing import Literal, Optional
 from uuid import uuid4
 from fastapi.encoders import jsonable_encoder
+from fastapi.responses import RedirectResponse
+
+
 
 # # Définition d'un objet Recette
 # class Recette(BaseModel):
