@@ -2,7 +2,7 @@
     {
         "id": 1,
         "artist": "Taylor Swift",
-        "album": "Taylor Swift",
+        "album": "Debut",
         "title": "Tim McGraw",
         "lyrics": ["He said the way my blue eyes shined",
         "Put those #Georgia# stars to shame that night",
@@ -64,7 +64,7 @@
 	{
 		"id": 2,
 		"artist": "Taylor Swift",
-		"album": "Fearless (Taylor's Version)",
+		"album": "Fearless",
 		"title": "White Horse",
 		"lyrics": ["Say you're sorry, that face of an angel",
         "Comes out just when you need it to",
@@ -112,7 +112,7 @@
     {   
         "id": 3,
         "artist": "Taylor Swift",
-        "album": "Speak Now (Taylor’s Version)",
+        "album": "Speak Now",
         "title": "When Emma Falls in Love (Taylor’s Version)",
         "lyrics": ["When Emma falls in love, she paces the floor",
         "Closes the blinds and locks the door",
@@ -159,7 +159,7 @@
     {
         "id" : 4,
         "artist" : "Taylor Swift",
-        "album": "Red (Taylor's Version)",
+        "album": "Red",
         "title": "The Very First Night",
         "lyrics": ["I wish I could fly",
         "I'd pick you up and we'd go back in time",
@@ -214,7 +214,7 @@
     {
         "id" : 5,
         "artist" : "Taylor Swift",
-        "album": "Red (Taylor's Version)",
+        "album": "Red",
         "title": "All Too Well (10 Minute Version)",
         "lyrics": ["I walked through the door with you, the air was cold",
         "But somethin' 'bout it felt like home somehow",
@@ -330,7 +330,7 @@
     {
         "id": 6,
         "artist": "Taylor Swift",
-        "album": "1989 (Taylor's Version)",
+        "album": "1989",
         "title": "Welcome to New York",
         "lyrics": ["Walkin' through a crowd, the village is aglow",
         "Kaleidoscope of loud heartbeats under coats",
@@ -379,7 +379,7 @@
     {
         "id": 7,
         "artist": "Taylor Swift",
-        "album": "1989 (Taylor's Version)",
+        "album": "1989",
         "title": "\"Slut!\"",
         "lyrics": ["Flamingo pink, #Sunrise Boulevard#",
         "Clink, clink, being this young is art",
@@ -436,7 +436,7 @@
     {
         "id": 8,
         "artist": "Taylor Swift", 
-        "album":"1989 (Taylor's Version)",
+        "album":"1989",
         "title": "Bad Blood ft. Kendrick Lamar",
         "lyrics": ["'Cause, baby, now we've got bad blood",
         "You know it used to be mad love (Uh)",
