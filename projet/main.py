@@ -59,20 +59,32 @@ async def root(request: Request):
 async def song_list(request: Request):
     return templates.TemplateResponse("song_list.html", {"songs": SONG_DATABASE, "request" : request})
 
+# Define the route to serve the lyrics page
+@app.get("/lyrics", response_class=HTMLResponse)
+async def lyrics(request: Request):
+    return templates.TemplateResponse("lyrics.html", {"request": request})
+
 # @app.get("/lyrics", response_class=HTMLResponse)
 # async def song_list(request: Request):
 #     return templates.TemplateResponse("lyrics.html", {"songs": SONG_DATABASE, "request" : request})
 
 # Define the route to handle form submission
 @app.post("/submit")
-async def submit_form(request: Request, checkbox_value: str = Form(...)):
+async def submit_form(request: Request):
     # Redirect to the lyrics.html page with the checkbox value
-    return RedirectResponse(url=f"/lyrics?checkbox_value={checkbox_value}")
+    form_data = await request.form() 
+    t = form_data.get("title")
+    for song in SONG_DATABASE : 
+        if song["title"] == t : 
+            paroles = song["lyrics"]
+    return templates.TemplateResponse("lyrics.html", {"titre" : t, "lyrics": paroles, "request" : request})
 
-# Define the route to serve the lyrics page
-@app.get("/lyrics", response_class=HTMLResponse)
-async def show_lyrics(request: Request, checkbox_value: str):
-    return templates.TemplateResponse("lyrics.html", {"request": request, "checkbox_value": checkbox_value})
+
+
+
+
+
+
 
 # @app.get("/ajout-recette") #afficher les templates
 # async def ajout_recette(request: Request):

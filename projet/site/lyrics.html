@@ -6,7 +6,23 @@
     <title>Lyrics</title>
 </head>
 <body>
-    <h1>Lyrics Page</h1>
-    <p>Checkbox value: {{ checkbox_value }}</p>
+    <h1> {{ titre }} </h1>
+    <p> 
+        {% for line in lyrics %}
+            {% for mot in line.split() %}
+                {% if mot[0] == '#' and mot[-1] == '#' %}
+                    <strong>{{ mot[1:-1] }}</strong>
+                {% elif mot[-1] == ',' and mot[-2] == '#' %}
+                    <strong>{{ mot[1:-2] }}</strong>,
+                {% elif mot[0] == '#' %}
+                    <strong>{{ mot[1:] }}</strong>{{ " " }}
+                {% elif mot[-1] == '#' %}
+                    <strong>{{ mot[:-1] }}</strong>{{ " " }}
+                {% else %}
+                    {{ mot }}{{ " " }}
+                {% endif %}
+            {% endfor %} </br>
+        {% endfor %}
+    </p>
 </body>
 </html>
