@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <title>Lyrics</title>
 </head>
 <body>
@@ -10,19 +12,49 @@
     <p> 
         {% for line in lyrics %}
             {% for mot in line.split() %}
+                <!-- cas d'un seul mot sans pctuation à côté -->
                 {% if mot[0] == '#' and mot[-1] == '#' %}
                     <strong>{{ mot[1:-1] }}</strong>
-                {% elif mot[-1] == ',' or '"' and mot[-2] == '#' %}
-                    <strong>{{ mot[1:-2] }}</strong>mot[-1]
+                <!-- cas d'un seul mot avec pctuation à côté -->
+                {% elif mot[0] == "#" and mot[-1] == ',' and mot[-2] == '#' %}
+                    <strong>{{ mot[1:-2] }}</strong>,
+                
+                <!-- cas plusieurs mots -- 1er mot  -->
                 {% elif mot[0] == '#' %}
                     <strong>{{ mot[1:] }}</strong>{{ " " }}
+
+                <!-- cas plusieurs mots -- deuxieme mot sans punct -->
                 {% elif mot[-1] == '#' %}
                     <strong>{{ mot[:-1] }}</strong>{{ " " }}
-                {% else %}
+
+                <!-- cas plusieurs mots -- 2eme mot avec punct -->
+                {% elif mot[-2] == '#' %}
+                    <strong>{{ mot[:-2] }}</strong>{{ mot[-1] }}
+                
+                    {% else %}
                     {{ mot }}{{ " " }}
                 {% endif %}
             {% endfor %} </br>
         {% endfor %}
     </p>
+
+    <div id="map" style="height: 500px; width: 100%;"></div>
+        <script>
+            function initMap() {
+                var map = L.map('map').setView([0, 0], 2);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                var places_with_coordinates = {{ coordinates | tojson | safe }};
+
+                // Fetch places and their coordinates from the endpoint
+                places_with_coordinates.forEach(place => {
+                        L.marker([place.lat, place.lng]).addTo(map)
+                            .bindPopup(place.name);
+                    });
+            }
+            initMap();  // Call the initMap function to initialize the map
+        </script>
 </body>
 </html>
