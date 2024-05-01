@@ -9,15 +9,15 @@
 </head>
 <body>
     <h1> {{ titre }} </h1>
-    <p> 
+    <p>   
         {% for line in lyrics %}
             {% for mot in line.split() %}
                 <!-- cas d'un seul mot sans pctuation à côté -->
                 {% if mot[0] == '#' and mot[-1] == '#' %}
                     <strong>{{ mot[1:-1] }}</strong>
                 <!-- cas d'un seul mot avec pctuation à côté -->
-                {% elif mot[0] == "#" and mot[-1] == ',' and mot[-2] == '#' %}
-                    <strong>{{ mot[1:-2] }}</strong>,
+                {% elif mot[0] == "#" and mot[-1] in ponctuation and mot[-2] == '#' %}
+                    <strong>{{ mot[1:-2] }}</strong>{{mot[-1]}}
                 
                 <!-- cas plusieurs mots -- 1er mot  -->
                 {% elif mot[0] == '#' %}

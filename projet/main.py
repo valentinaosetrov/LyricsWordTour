@@ -39,8 +39,9 @@ def add_hashtag(lyrics):
                     modif = modif.replace(ent.text, entity_modif)
                     t.append(ent.text)
             else : 
-                entity_modif = "#" + ent.text + "#"
-                modif = modif.replace(ent.text, entity_modif)
+                if ent.label_ == "GPE" : 
+                    entity_modif = "#" + ent.text + "#"
+                    modif = modif.replace(ent.text, entity_modif)
         paroles.append(modif)
     return paroles
 
@@ -95,6 +96,7 @@ async def lyrics(request: Request):
 # Define the route to handle form submission
 @app.post("/submit")
 async def submit_form(request: Request):
+    punct = [",", "?"]
     # Redirect to the lyrics.html page with the checkbox value
     form_data = await request.form() 
     t = form_data.get("title")
@@ -117,4 +119,4 @@ async def submit_form(request: Request):
                     if coordinates:
                         places_with_coordinates.append({"name": place, "lat": coordinates["lat"], "lng": coordinates["lng"]})
     print("Places with coordinates:", places_with_coordinates)
-    return templates.TemplateResponse("lyrics.html", {"titre" : t, "lyrics": paroles, "coordinates":places_with_coordinates, "request" : request})
+    return templates.TemplateResponse("lyrics.html", {"titre" : t, "lyrics": paroles, "coordinates":places_with_coordinates, "ponctuation": punct, "request" : request})
