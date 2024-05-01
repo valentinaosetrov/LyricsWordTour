@@ -50,4 +50,10 @@ $(document).ready(function(){
         localStorage.setItem("album", album);
         window.location.href = "song_list.html";
     });
+    $("#unknown").click(function(){
+        alert("unknown clicked");
+        var album = "unknown";
+        localStorage.setItem("album", album);
+        window.location.href = "song_list.html";
+    });
 });

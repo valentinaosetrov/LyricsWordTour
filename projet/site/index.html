@@ -65,15 +65,17 @@
 					</a>
 				</div>
 			</div>
-		</div>
-
-		<!-- <nav class="menu">
-  			<ul>
-    			<li><a href="{{ url_for('root')}}">Accueil</a></li> Le lien fait appel à la méthode FastAPI nommée root -->
-  			<!-- </ul>
-		</nav> --> 
-
-		<div class="contenu">
+			<div class="row mb-5 mt-5 text-center">
+				<div class="col order-1"></div>
+				<div class="col order-2"></div>
+				<div class="col order-3">
+					<a href="{{ url_for('song_list') }}">
+						<img id="unknown" src="../static/Taylor_who.jpg" class="d-block" width="250" height="250" alt="Unknown">
+					</a>
+				</div>
+				<div class="col order-4"></div>
+				<div class="col order-5"></div>
+			</div>
 		</div>
 	</body>
 </html>
