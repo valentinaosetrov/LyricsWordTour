@@ -8,10 +8,32 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <!-- <script src="../static/song_list.js"></script> -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
 	</head>
-	<body class="bg-secondary mb-3">
+	<body>
+        <style>
+            body {
+                background-image: url("https://i.pinimg.com/originals/e8/7e/b4/e87eb4a310de48ea4ff840f685a7ee70.jpg");
+                background-size: cover;
+
+            }
+        </style>
         <div class="container mt-3 mb-3 text-center">
-            <h2>Choose a song</h2>
+            <h2>
+                <style>
+                    h2 {
+                        /*outline the text*/ 
+                        color:antiquewhite;
+                        text-shadow: 5cm;
+                    }
+                    mark {
+                        background-color: rgb(205, 212, 212);
+                        border-radius: 5cm;
+                    }
+                </style>
+                <mark>Choose a song</mark></h2>
             <form action="/submit" method="post">
                 <!-- ici nous créons une fieldset pour chaque album -->
                 {% if clicked_image_id == "Debut" %}
@@ -20,8 +42,32 @@
                         <ul>
                             {% for song in songs %}
                                 {% if song.album == clicked_image_id %}
-                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                                {% endif %}
+                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.id }} - {{ song.title }}</label>
+                                    <style>
+                                    #debut {
+                                        background-image: url("https://u.jimcdn.com/cms/o/s3628d4c0ebfcc161/userlayout/img/taylor-swift-cover.jpg?t=1511091746");
+                                        background-size: cover;
+                                        width: 1000x; /* Changer la largeur selon vos besoins */
+                                        height: 500px; /* Changer la hauteur selon vos besoins */
+                                        padding: 90px; /* espace intérieur pour le contenu */
+                                        font-family: "Sacramento", sans-serif;
+                                        border-radius: 10px;
+                                        input[type=radio] {
+                                            width: 20px;
+                                            height: 20px;
+                                            
+                                        }
+                                        label {
+                                            color: white;
+                                            font-size: 20px;
+                                            font-weight: bold;
+                                            margin-left: 10px;
+
+                                        }
+                    
+                                    }
+                                    </style>
+                                    {% endif %}
                             {% endfor %}
                         </ul>
                     </fieldset>
@@ -30,7 +76,29 @@
                         <ul>
                             {% for song in songs %}
                                 {% if song.album == clicked_image_id %}
-                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.id }} - {{ song.title }}</label>
+                                    <style>
+                                        #fearless {
+                                            background-image: url("https://helios-i.mashable.com/imagery/articles/008vuyP557xJpnWfx5ethbH/hero-image.fill.size_1248x702.v1619019618.png");
+                                            background-size: cover;
+                                            width: 1000x; /* Changer la largeur selon vos besoins */
+                                            height: 500px; /* Changer la hauteur selon vos besoins */
+                                            padding: 90px; /* espace intérieur pour le contenu */
+                                            font-family: "Montserrat", sans-serif;
+                                            input[type=radio] {
+                                                width: 20px;
+                                                height: 20px;
+                                                
+                                            }
+                                            label {
+                                                color: white;
+                                                font-size: 20px;
+                                                font-weight: bold;
+                                                margin-left: 10px;
+                                            }
+                        
+                                        }
+                                        </style>
                                 {% endif %}
                             {% endfor %}
                         </ul>
@@ -119,8 +187,10 @@
                         <fieldset id="unknown">
                             <textarea class="form-control" id="personalised" type="textarea" name="personalised" rows="10" cols="50" placeholder="Écris ton chanson!"></textarea>
                         </fieldset>
-                        <button type="submit"></button>
                     {% endif %}
+                    <br>
+                    <button type="submit" class="btn btn-lg btn-success">Submit</button>
+
             </form>
         </div>
     </body>
