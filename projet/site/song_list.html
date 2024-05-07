@@ -10,6 +10,12 @@
         <!-- <script src="../static/song_list.js"></script> -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sacramento">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rochester">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent_Marker">
+
+
+
 
 	</head>
 	<body>
@@ -17,7 +23,6 @@
             body {
                 background-image: url("https://i.pinimg.com/originals/e8/7e/b4/e87eb4a310de48ea4ff840f685a7ee70.jpg");
                 background-size: cover;
-
             }
         </style>
         <div class="container mt-3 mb-3 text-center">
@@ -47,24 +52,21 @@
                                     #debut {
                                         background-image: url("https://u.jimcdn.com/cms/o/s3628d4c0ebfcc161/userlayout/img/taylor-swift-cover.jpg?t=1511091746");
                                         background-size: cover;
-                                        width: 1000x; /* Changer la largeur selon vos besoins */
-                                        height: 500px; /* Changer la hauteur selon vos besoins */
+                                        width: 1000x; 
+                                        height: 500px;
                                         padding: 90px; /* espace intérieur pour le contenu */
                                         font-family: "Sacramento", sans-serif;
                                         border-radius: 10px;
                                         input[type=radio] {
                                             width: 20px;
-                                            height: 20px;
-                                            
+                                            height: 20px;     
                                         }
                                         label {
                                             color: white;
                                             font-size: 20px;
                                             font-weight: bold;
                                             margin-left: 10px;
-
                                         }
-                    
                                     }
                                     </style>
                                     {% endif %}
@@ -81,14 +83,14 @@
                                         #fearless {
                                             background-image: url("https://helios-i.mashable.com/imagery/articles/008vuyP557xJpnWfx5ethbH/hero-image.fill.size_1248x702.v1619019618.png");
                                             background-size: cover;
-                                            width: 1000x; /* Changer la largeur selon vos besoins */
-                                            height: 500px; /* Changer la hauteur selon vos besoins */
+                                            width: 1000x; 
+                                            height: 500px;
                                             padding: 90px; /* espace intérieur pour le contenu */
                                             font-family: "Montserrat", sans-serif;
+                                            border-radius: 10px;
                                             input[type=radio] {
                                                 width: 20px;
-                                                height: 20px;
-                                                
+                                                height: 20px;     
                                             }
                                             label {
                                                 color: white;
@@ -96,7 +98,6 @@
                                                 font-weight: bold;
                                                 margin-left: 10px;
                                             }
-                        
                                         }
                                         </style>
                                 {% endif %}
@@ -108,8 +109,29 @@
                         <ul>
                             {% for song in songs %}
                                 {% if song.album == clicked_image_id %}
-                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                                {% endif %}
+                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.id }} - {{ song.title }}</label>
+                                    <style>
+                                        #speaknow {
+                                            background-image: url("https://i.redd.it/speak-now-tour-v0-3crwjx3ehimb1.jpg?width=4592&format=pjpg&auto=webp&s=fd6abd4d7cfc90b20d3e1a87ae5e6a8164dce2cf");
+                                            background-size: cover;
+                                            width: 1000x; 
+                                            height: 500px;
+                                            padding: 90px; /* espace intérieur pour le contenu */
+                                            font-family: "Rochester", sans-serif;
+                                            border-radius: 10px;
+                                            input[type=radio] {
+                                                width: 20px;
+                                                height: 20px;     
+                                            }
+                                            label {
+                                                color: antiquewhite;
+                                                font-size: 20px;
+                                                font-weight: bold;
+                                                margin-left: 10px;
+                                            }
+                                        }
+                                        </style>
+                                    {% endif %}
                             {% endfor %}
                         </ul>
                     </fieldset>
@@ -118,8 +140,29 @@
                     <ul>
                         {% for song in songs %}
                             {% if song.album == clicked_image_id %}
-                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                            {% endif %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.id }} - {{ song.title }}</label>
+                                <style>
+                                    #red {
+                                        background-image: url("https://www.rollingstone.com/wp-content/uploads/2018/06/rs-183518-169500230.jpg?w=1581&h=1054&crop=1");
+                                        background-size: cover;
+                                        width: 1000x; 
+                                        height: 500px; 
+                                        padding: 90px; 
+                                        font-family: "Anton", sans-serif;
+                                        border-radius: 10px;
+                                        input[type=radio] {
+                                            width: 20px;
+                                            height: 20px;     
+                                        }
+                                        label {
+                                            color: antiquewhite;
+                                            font-size: 20px;
+                                            font-weight: bold;
+                                            margin-left: 10px;
+                                        }
+                                    }
+                                    </style>
+                                {% endif %}
                         {% endfor %}
                     </ul>
                 </fieldset>
@@ -128,8 +171,29 @@
                     <ul>
                         {% for song in songs %}
                             {% if song.album == clicked_image_id %}
-                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
-                            {% endif %}
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.id }} - {{ song.title }}</label>
+                                <style>
+                                    #ninety {
+                                        background-image: url("https://www.rollingstone.com/wp-content/uploads/2018/06/rs-183518-169500230.jpg?w=1581&h=1054&crop=1");
+                                        background-size: cover;
+                                        width: 1000x; 
+                                        height: 500px; 
+                                        padding: 90px; 
+                                        font-family: "Permanent Marker", sans-serif;
+                                        border-radius: 10px;
+                                        input[type=radio] {
+                                            width: 20px;
+                                            height: 20px;     
+                                        }
+                                        label {
+                                            color: antiquewhite;
+                                            font-size: 20px;
+                                            font-weight: bold;
+                                            margin-left: 10px;
+                                        }
+                                    }
+                                    </style>
+                                {% endif %}
                         {% endfor %}
                     </ul>
                 </fieldset>
