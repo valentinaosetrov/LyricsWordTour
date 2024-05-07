@@ -84,9 +84,20 @@ if os.path.exists(SONG_DATABASE_FILE):
 async def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.post("/click_image")
+async def click_image(request: Request):
+    global clicked_image_id
+    form_data = await request.form() 
+    clicked_image_id = form_data.get("image_id")
+    print(clicked_image_id)
+    # clicked_image_id = image_id
+    # return RedirectResponse(url="/song_list")
+    return templates.TemplateResponse("song_list.html", {"songs": SONG_DATABASE, "clicked_image_id": clicked_image_id, "request": request})
+
+
 @app.get("/song_list", response_class=HTMLResponse)
 async def song_list(request: Request):
-    return templates.TemplateResponse("song_list.html", {"songs": SONG_DATABASE, "request" : request})
+    return templates.TemplateResponse("song_list.html", {"songs": SONG_DATABASE, "clicked_image_id": clicked_image_id, "request" : request})
 
 # Define the route to serve the lyrics page
 @app.get("/lyrics", response_class=HTMLResponse)

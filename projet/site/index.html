@@ -6,19 +6,21 @@
 		<!-- link pour le bootstrap -->
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-		<script src="/static/index.js"></script>
+		<!-- <script src="/static/index.js"></script> -->
 		<style>
 			body {
 				background-image: url("https://i.pinimg.com/originals/e8/7e/b4/e87eb4a310de48ea4ff840f685a7ee70.jpg");
 				background-size: cover; 
+
 				/* pour couvrir page entière  */
+				
 			}
 		</style>
 	</head>
 	<body>
 		<div class="mb-5 bg-light">
 			<h1 class="text-center">Lyrics Wor(L)d Tour</h1>
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
 					<div class="container-fluid">
 					  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -64,9 +66,103 @@
 						</ul>
 					</div>
 				</div>
-		  	</nav>
+		  	</nav> -->
 		</div>
-		<div class="container p-3 mb-5 bg-white rounded">
+		<form action="/click_image" method="post">
+			<div class="container p-3 mb-5 bg-white rounded">
+				<div class="row mb-3 mt-3 text-center">
+					<div class="col order-1">
+						<button class="bg-white" type="submit" name="image_id" value="Debut">
+							<a href="{{ url_for('song_list') }}">
+								<img id="debut" src="https://upload.wikimedia.org/wikipedia/en/1/1f/Taylor_Swift_-_Taylor_Swift.png" class="d-block w-100" alt="debut album">
+							</a>
+						</button>
+					</div>
+					<div class="col order-2">
+						<button type="submit" name="image_id" value="Fearless">
+							<a href="{{ url_for('song_list') }}">
+								<img id="fearless" src="https://static.fnac-static.com/multimedia/Images/FR/NR/e9/cc/ca/13290729/1540-1/tsp20210222092044/Fearle-Taylor-s-Version.jpg" class="d-block w-100" alt="fearless album">
+							</a>
+						</button>
+					</div>
+					<div class="col order-3">
+						<button type="submit" name="image_id" value="Speak Now">
+							<a href="{{ url_for('song_list') }}">
+								<img id="speaknow" src="https://static.fnac-static.com/multimedia/Images/FR/NR/59/6c/ee/15625305/1540-1/tsp20230608120135/Speak-Now-Taylor-s-Version.jpg" class="d-block w-100" alt="Speak Now album">
+							</a>
+						</button>
+					</div>
+					<div class="col order-4">
+						<button type="submit" name="image_id" value="Red">
+							<a href="{{ url_for('song_list') }}">
+								<img id="red" src="https://upload.wikimedia.org/wikipedia/en/4/47/Taylor_Swift_-_Red_(Taylor's_Version).png" class="d-block w-100" alt="Speak Now album">
+							</a>
+						</button>
+					</div>
+					<div  class="col order-5">
+						<button type="submit" name="image_id" value="1989">
+							<a href="{{ url_for('song_list') }}">
+								<img id="1989" src="https://upload.wikimedia.org/wikipedia/en/d/d5/Taylor_Swift_-_1989_(Taylor's_Version).png" class="d-block w-100" alt="1989 album">
+							</a>
+						</button>
+					</div>
+				</div>
+				<div class="row mb-3 mt-3 text-center">
+					<div class="col order-1">
+						<button type="submit" name="image_id" value="Reputation">
+							<a href="{{ url_for('song_list') }}">
+								<img id="reputation" src="https://people.com/thmb/bnv58OSnUSsOsnwP_c9f85fBdv0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(992x0:994x2)/taylor-swift7-2000-48f9bfb372c34e36866773b1ede0b372.jpg" class="d-block w-100" alt="Reputation album">
+							</a>
+						</button>
+					</div>
+					<div class="col order-2">
+						<button type="submit" name="image_id" value="Lover">
+							<a href="{{ url_for('song_list') }}">
+								<img id="lover" src="https://upload.wikimedia.org/wikipedia/en/c/cd/Taylor_Swift_-_Lover.png" class="d-block w-100" alt="lover album">
+							</a>
+						</button>
+					</div>
+					<div class="col order-3">
+						<button type="submit" name="image_id" value="Folklore">
+							<a href="{{ url_for('song_list') }}">
+								<img id="folklore" src="https://upload.wikimedia.org/wikipedia/en/f/f8/Taylor_Swift_-_Folklore.png" class="d-block w-100" alt="Folklore album">
+							</a>
+						</button>
+					</div>
+					<div class="col order-4">
+						<button type="submit" name="image_id" value="Evermore">
+							<a href="{{ url_for('song_list') }}">
+								<img id="evermore" src="https://upload.wikimedia.org/wikipedia/en/0/0a/Taylor_Swift_-_Evermore.png" class="d-block w-100" alt="Evermore album">
+							</a>
+						</button>
+					</div>
+					<div class="col order-5">
+						<button type="submit" name="image_id" value="Midnights">
+							<a href="{{ url_for('song_list') }}">
+								<img id="midnights" src="https://upload.wikimedia.org/wikipedia/en/9/9f/Midnights_-_Taylor_Swift.png" class="d-block w-100" alt="Midnights album">
+							</a>
+						</button>
+					</div>
+				</div>
+				<div class="row mb-5 mt-5 text-center">
+					<div class="col order-1"></div>
+					<div class="col order-2"></div>
+					<div class="col order-3">
+						<button type="submit" name="image_id" value="unknown">
+							<a href="{{ url_for('song_list') }}">
+								<img id="unknown" src="../static/Taylor_who.jpg" class="d-block w-100" alt="unknown album">
+							</a>
+						</button>
+					</div>
+					<div class="col order-4"></div>
+					<div class="col order-5"></div>
+				</div>
+			</div>
+		</form> 
+
+
+
+		<!-- <div class="container p-3 mb-5 bg-white rounded">
 			<div class="row mb-3 mt-3 text-center">
 				<div class="col order-1">
 					<a href="{{ url_for('song_list') }}">
@@ -92,7 +188,7 @@
 					<a href="{{ url_for('song_list') }}">
 						<img id="1989" src="https://upload.wikimedia.org/wikipedia/en/d/d5/Taylor_Swift_-_1989_(Taylor's_Version).png" class="d-block w-100" alt="1989">
 					</a>
-					</div>
+				</div>
 			</div>
 			<div class="row mb-3 mt-3 text-center">
 				<div class="col order-1">
@@ -132,6 +228,6 @@
 				<div class="col order-4"></div>
 				<div class="col order-5"></div>
 			</div>
-		</div>
+		</div> -->
 	</body>
 </html>
