@@ -12,22 +12,33 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rochester">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent_Marker">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=UnifrakturMaguntia">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=HelveticaNeue">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Shade">
+
+
 
         <style>
-            h2 {
-                /*outline the text*/ 
-                color:antiquewhite;
-                text-shadow: 5cm;
-            }
-            mark {
-                background-color: rgb(205, 212, 212);
-                border-radius: 5cm;
-            }
             body {
-                background-image: url("https://i.pinimg.com/originals/e8/7e/b4/e87eb4a310de48ea4ff840f685a7ee70.jpg");
-                background-size: cover;
-            }
+            position: relative; /* Needed for positioning pseudo-element */
+            background-image: url("https://i.pinimg.com/originals/e8/7e/b4/e87eb4a310de48ea4ff840f685a7ee70.jpg");
+            background-size: cover;
+        }
+
+            body::before {
+            content: ""; /* Needed for pseudo-element */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity by changing the last value */
+            z-index: -1; /* Ensures the pseudo-element is behind other content */
+        }
+
         </style>
 	</head>
 	<body>
@@ -35,7 +46,17 @@
 			<nav class="navbar navbar-light bg-light text-center">
 				<div class="container d-flex justify-content-center align-items-center">
 				  <img src="../static/logo.png" id="logo" alt="Logo" width="80px" height="80px" class="d-inline-block align-top">
+                    <style>
+                        #logo {
+                            border-radius: 50%;
+                        }
+                    </style>
 				  <h1 class="p-3">Lyrics Wor(L)d Tour</h1>
+                  <style>
+                    h1 {
+                        font-family: "Bungee Shade";
+                    }
+                  </style>
 				</div>
 			</nav>
 		</div>
@@ -44,20 +65,32 @@
                 <!-- ici nous créons une fieldset pour chaque album -->
                 {% if clicked_image_id == "Debut" %}
                     <h2>
-                        <mark>Choose a song</mark>
+                        <mark id="debuttext">Choose a song</mark>
                     </h2>
+                    <style>
+                        #debuttext {
+                            background-color: rgb(24, 109, 109);
+                            border-radius: 4cm;
+                            font-family: "Sacramento", sans-serif;
+                            color: aliceblue;
+                        }
+                    </style>
+                    <br>
                     <fieldset id="debut">
                         <!-- ici nous afficherons les chansons présentes dans la base de données -->
                         <ul>
                             {% for song in songs %}
                                 {% if song.album == clicked_image_id %}
-                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.id }} - {{ song.title }}</label>
+                                <div class="form-check d-flex align-items-center justify-content-center">
+                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.title }}</label>
+                                </div>
                                     <style>
                                     #debut {
+                                        
                                         background-image: url("https://u.jimcdn.com/cms/o/s3628d4c0ebfcc161/userlayout/img/taylor-swift-cover.jpg?t=1511091746");
                                         background-size: cover;
                                         width: 1000x; 
-                                        height: 500px;
+                                        height: 380px;
                                         padding: 90px; /* espace intérieur pour le contenu */
                                         font-family: "Sacramento", sans-serif;
                                         border-radius: 10px;
@@ -67,7 +100,7 @@
                                         }
                                         label {
                                             color: white;
-                                            font-size: 20px;
+                                            font-size: 25px;
                                             font-weight: bold;
                                             margin-left: 10px;
                                         }
@@ -79,20 +112,31 @@
                     </fieldset>
                 {% elif clicked_image_id == "Fearless" %}
                 <h2>
-                    <mark>Choose a song</mark>
+                    <mark id="fearlesstext">Choose a song</mark>
                 </h2>
+                <style>
+                    #fearlesstext {
+                        background-color: rgb(184, 173, 81);
+                        border-radius: 4cm;
+                        font-family: "Montserrat", sans-serif;
+                        color: aliceblue;
+                    }
+                </style>
+                <br>
                     <fieldset id="fearless">
                         <ul>
                             {% for song in songs %}
                                 {% if song.album == clicked_image_id %}
-                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.id }} - {{ song.title }}</label>
+                                <div class="form-check d-flex align-items-center justify-content-center">
+                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.title }}</label>
+                                </div>
                                     <style>
                                         #fearless {
-                                            background-image: url("https://helios-i.mashable.com/imagery/articles/008vuyP557xJpnWfx5ethbH/hero-image.fill.size_1248x702.v1619019618.png");
+                                            background-image: url("https://cdn.prod.www.spiegel.de/images/2d3082c7-ae8d-448b-99b5-c4da285f5c45_w960_r1.778_fpx63_fpy28.jpg");
                                             background-size: cover;
                                             width: 1000x; 
-                                            height: 500px;
-                                            padding: 90px; /* espace intérieur pour le contenu */
+                                            height: 380px;
+                                            padding: 50px; /* espace intérieur pour le contenu */
                                             font-family: "Montserrat", sans-serif;
                                             border-radius: 10px;
                                             input[type=radio] {
@@ -100,7 +144,7 @@
                                                 height: 20px;     
                                             }
                                             label {
-                                                color: white;
+                                                color: rgb(77, 72, 36);
                                                 font-size: 20px;
                                                 font-weight: bold;
                                                 margin-left: 10px;
@@ -113,19 +157,30 @@
                     </fieldset>
                 {% elif clicked_image_id == "Speak Now" %}
                 <h2>
-                    <mark>Choose a song</mark>
+                    <mark id="speaknowtext">Choose a song</mark>
                 </h2>
+                <style>
+                    #speaknowtext {
+                        background-color: rgb(106, 42, 119);
+                        border-radius: 4cm;
+                        font-family: "Rochester", sans-serif;
+                        color: antiquewhite;
+                    }
+                </style>
+                <br>
                     <fieldset id="speaknow">
                         <ul>
                             {% for song in songs %}
                                 {% if song.album == clicked_image_id %}
-                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.id }} - {{ song.title }}</label>
+                                <div class="form-check d-flex align-items-center justify-content-center">
+                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.title }}</label>
+                                </div>
                                     <style>
                                         #speaknow {
                                             background-image: url("https://i.redd.it/speak-now-tour-v0-3crwjx3ehimb1.jpg?width=4592&format=pjpg&auto=webp&s=fd6abd4d7cfc90b20d3e1a87ae5e6a8164dce2cf");
                                             background-size: cover;
                                             width: 1000x; 
-                                            height: 500px;
+                                            height: 380px;
                                             padding: 90px; /* espace intérieur pour le contenu */
                                             font-family: "Rochester", sans-serif;
                                             border-radius: 10px;
@@ -147,21 +202,30 @@
                     </fieldset>
                 {% elif clicked_image_id == "Red" %}
                 <h2>
-                    <mark>Choose a song</mark>
+                    <mark id="redtext">Choose a song</mark>
                 </h2>
+                <style>
+                    #redtext {
+                        background-color: rgb(197, 59, 59);
+                        border-radius: 4cm;
+                        font-family: "Anton", sans-serif;
+                        color: antiquewhite;
+                    }
+                </style>
+                <br>
                 <fieldset id="red">
                     <ul>
                         {% for song in songs %}
                             {% if song.album == clicked_image_id %}
                             <div class="form-check d-flex align-items-center justify-content-center">
-                                <input class="form-check-input" type="radio" id="{{ song.id }}" name="title" value="{{ song.title }}"><label for="{{ song.id }}">{{ song.id }} - {{ song.title }}</label>
+                                <input class="form-check-input" type="radio" id="{{ song.id }}" name="title" value="{{ song.title }}"><label>{{ song.title }}</label>
                             </div>
                                 <style>
                                     #red {
-                                        background-image: url("https://www.rollingstone.com/wp-content/uploads/2018/06/rs-183518-169500230.jpg?w=1581&h=1054&crop=1");
+                                        background-image: url("https://www.rollingstone.com/wp-content/uploads/2018/06/gettyimages-163644955-3ba73c1f-5180-4bd8-8a3f-1ea73981d4d9.jpg?w=1581&h=1054&crop=1");
                                         background-size: cover;
                                         width: 1000x; 
-                                        height: 500px; 
+                                        height: 380px; 
                                         padding: 90px; 
                                         font-family: "Anton", sans-serif;
                                         border-radius: 10px;
@@ -170,7 +234,7 @@
                                             height: 20px;     
                                         }
                                         label {
-                                            color: antiquewhite;
+                                            color: rgb(197, 59, 59);
                                             font-size: 20px;
                                             font-weight: bold;
                                             margin-left: 10px;
@@ -183,19 +247,30 @@
                 </fieldset>
                 {% elif clicked_image_id == "1989" %}
                 <h2>
-                    <mark>Choose a song</mark>
+                    <mark id="_1989text">Choose a song</mark>
                 </h2>
-                <fieldset id="1989">
+                <style>
+                    #_1989text {
+                        background-color: rgb(46, 46, 145);
+                        border-radius: 4cm;
+                        font-family: "Permanent Marker", sans-serif;
+                        color: antiquewhite;
+                    }
+                </style>
+                <br>
+                <fieldset id="_1989">
                     <ul>
                         {% for song in songs %}
                             {% if song.album == clicked_image_id %}
-                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.id }} - {{ song.title }}</label>
+                            <div class="form-check d-flex align-items-center justify-content-center">
+                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.title }}</label>
+                            </div>
                                 <style>
-                                    #ninety {
-                                        background-image: url("https://www.rollingstone.com/wp-content/uploads/2018/06/rs-183518-169500230.jpg?w=1581&h=1054&crop=1");
+                                    #_1989 {
+                                        background-image: url("https://www.billboard.com/wp-content/uploads/media/taylor-swift-1989-sprint-center-2015-billboard-650.jpg?w=650");
                                         background-size: cover;
                                         width: 1000x; 
-                                        height: 500px; 
+                                        height: 380px; 
                                         padding: 90px; 
                                         font-family: "Permanent Marker", sans-serif;
                                         border-radius: 10px;
@@ -204,7 +279,7 @@
                                             height: 20px;     
                                         }
                                         label {
-                                            color: antiquewhite;
+                                            color: aliceblue;
                                             font-size: 20px;
                                             font-weight: bold;
                                             margin-left: 10px;
@@ -217,73 +292,244 @@
                 </fieldset>
                 {% elif clicked_image_id == "Reputation" %}
                 <h2>
-                    <mark>Choose a song</mark>
+                    <mark id="reputationtext">Choose a song</mark>
                 </h2>
+                <style>
+                    #reputationtext {
+                        background-color: rgb(27, 27, 27);
+                        border-radius: 4cm;
+                        font-family: "UnifrakturMaguntia", sans-serif;
+                        color: white;
+                    }
+                </style>
+                <br>
                     <fieldset id="reputation">
                         <ul>
                             {% for song in songs %}
                                 {% if song.album == clicked_image_id %}
-                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                                <div class="form-check d-flex align-items-center justify-content-center">
+                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.title }}</label>
+                                </div>
+                                <style>
+                                    #reputation {
+                                        background-image: url("https://media1.popsugar-assets.com/files/thumbor/W83WYYncfYt0ROVA8ybmFdiB4b0/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2018/06/04/693/n/1922398/fe7b64169ff4f701_GettyImages-966470996/i/Taylor-Swift-Reputation-Stadium-Tour-Pictures.jpg");
+                                        background-size: cover;
+                                        width: 1000x; 
+                                        height: 380px; 
+                                        padding: 90px; 
+                                        font-family: "UnifrakturMaguntia", sans-serif;
+                                        border-radius: 10px;
+                                        input[type=radio] {
+                                            width: 20px;
+                                            height: 20px;     
+                                        }
+                                        label {
+                                            color: aliceblue;
+                                            font-size: 20px;
+                                            font-weight: bold;
+                                            margin-left: 10px;
+                                        }
+                                    }
+                                    </style>
                                 {% endif %}
                             {% endfor %}
                         </ul>
                     </fieldset>
                 {% elif clicked_image_id == "Lover" %}
                 <h2>
-                    <mark>Choose a song</mark>
+                    <mark id="lovertext">Choose a song</mark>
                 </h2>
+                <style>
+                    #lovertext {
+                        background-color: rgb(211, 224, 236);
+                        border-radius: 4cm;
+                        font-family: "Satisfy", sans-serif;
+                        color: palevioletred;
+                    }
+                </style>
+                <br>
                     <fieldset id="lover">
                         <ul>
                             {% for song in songs %}
                                 {% if song.album == clicked_image_id %}
-                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                                <div class="form-check d-flex align-items-center justify-content-center">
+                                    <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.title }}</label>
+                                </div>
+                                <style>
+                                    #lover {
+                                        background-image: url("https://pbs.twimg.com/media/FX2L_jBUIAAH9Ld?format=jpg&name=4096x4096");
+                                        background-size: cover;
+                                        width: 1000x; 
+                                        height: 380px; 
+                                        padding: 90px; 
+                                        font-family: "Satisfy", sans-serif;
+                                        border-radius: 10px;
+                                        input[type=radio] {
+                                            width: 20px;
+                                            height: 20px;     
+                                        }
+                                        label {
+                                            color: palevioletred;
+                                            font-size: 20px;
+                                            font-weight: bold;
+                                            margin-left: 10px;
+                                        }
+                                    }
+                                    </style>
                                 {% endif %}
                             {% endfor %}
                         </ul>
                     </fieldset>
                     {% elif clicked_image_id == "Folklore" %}
                     <h2>
-                        <mark>Choose a song</mark>
+                        <mark id="folkloretext">Choose a song</mark>
                     </h2>
+                    <style>
+                        #folkloretext {
+                            background-color: rgb(3, 87, 3);
+                            border-radius: 4cm;
+                            font-family: "IM Fell DW Pica", sans-serif;
+                            color: whitesmoke;
+                        }
+                    </style>
+                    <br>
                         <fieldset id="folklore">
                             <ul>
                                 {% for song in songs %}
                                     {% if song.album == clicked_image_id %}
-                                        <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                                    <div class="form-check d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.title }}</label>
+                                    </div>
+                                    <style>
+                                    #folklore {
+                                        background-image: url("https://www.rollingstone.com/wp-content/uploads/2020/07/SwiftCardiganVideo.jpg");
+                                        background-size: cover;
+                                        width: 1000x; 
+                                        height: 380px; 
+                                        padding: 90px; 
+                                        font-family: "IM Fell DW Pica", sans-serif;
+                                        border-radius: 10px;
+                                        input[type=radio] {
+                                            width: 20px;
+                                            height: 20px;     
+                                        }
+                                        label {
+                                            color: rgb(3, 87, 3);
+                                            font-size: 20px;
+                                            font-weight: bold;
+                                            margin-left: 10px;
+                                        }
+                                    }
+                                    </style>
                                     {% endif %}
                                 {% endfor %}
                             </ul>
                         </fieldset>
                     {% elif clicked_image_id == "Evermore" %}
                     <h2>
-                        <mark>Choose a song</mark>
+                        <mark id="evermoretext">Choose a song</mark>
                     </h2>
+                    <style>
+                        #evermoretext {
+                            background-color: rgb(77, 52, 20);
+                            border-radius: 4cm;
+                            font-family: "IM Fell DW Pica", sans-serif;
+                            color: whitesmoke;
+                        }
+                    </style>
+                    <br>
                         <fieldset id="evermore">
                             <ul>
                                 {% for song in songs %}
                                     {% if song.album == clicked_image_id %}
-                                        <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                                    <div class="form-check d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.title }}</label>
+                                    </div>
+                                    <style>
+                                        #evermore {
+                                            background-image: url("https://www.usmagazine.com/wp-content/uploads/2020/12/Taylor-Swift-Debuts-Willow-Music-Video-From-Surprise-9th-Album-Evermore-02.jpg?quality=86&strip=all");
+                                            background-size: cover;
+                                            width: 1000x; 
+                                            height: 380px; 
+                                            padding: 90px; 
+                                            font-family: "IM Fell DW Pica", sans-serif;
+                                            border-radius: 10px;
+                                            input[type=radio] {
+                                                width: 20px;
+                                                height: 20px;     
+                                            }
+                                            label {
+                                                color: rgb(77, 52, 20);
+                                                font-size: 20px;
+                                                font-weight: bold;
+                                                margin-left: 10px;
+                                            }
+                                        }
+                                        </style>
                                     {% endif %}
                                 {% endfor %}
                             </ul>
                         </fieldset>
                     {% elif clicked_image_id == "Midnights" %}
                     <h2>
-                        <mark>Choose a song</mark>
+                        <mark id="midnightstext">Choose a song</mark>
                     </h2>
+                    <style>
+                        #midnightstext {
+                            background-color: rgb(133, 84, 21);
+                            border-radius: 4cm;
+                            font-family: "HelveticaNeue", sans-serif;
+                            font-weight: bold;
+                            color: rgb(211, 224, 236);
+                        }
+                    </style>
+                    <br>
                         <fieldset id="midnights">
                             <ul>
                                 {% for song in songs %}
                                     {% if song.album == clicked_image_id %}
-                                        <input class="form-check-input" type="radio" name="title" value="{{ song.title }}">{{ song.id }} - {{ song.title }}</input>
+                                    <div class="form-check d-flex align-items-center justify-content-center">
+                                        <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.title }}</label>
+                                    </div>
+                                    <style>
+                                        #midnights {
+                                            background-image: url("https://assets.teenvogue.com/photos/6352906dd6b540dd757e618e/16:9/w_2560%2Cc_limit/Taylor%20Swift%20Midnights%20Press%20Shot%204_Photographer%20credit:%20Beth%20Garrabrant.jpg");
+                                            background-size: cover;
+                                            width: 1000x; 
+                                            height: 380px; 
+                                            padding: 90px; 
+                                            font-family: "HelveticaNeue", sans-serif;
+                                            border-radius: 10px;
+                                            input[type=radio] {
+                                                width: 20px;
+                                                height: 20px;     
+                                            }
+                                            label {
+                                                color: rgb(211, 224, 236);
+                                                font-size: 20px;
+                                                font-weight: bold;
+                                                margin-left: 10px;
+                                            }
+                                        }
+                                        </style>
                                     {% endif %}
                                 {% endfor %}
                             </ul>
                         </fieldset>
                     {% else %}
                     <h2>
-                        <mark>Write some lyrics</mark>
+                        <mark id="newtext">Type in some lyrics of your choice!</mark>
                     </h2>
+                    <style>
+                        #newtext {
+                            background-color:rgb(211, 224, 236);
+                            border-radius: 4cm;
+                            font-family: "HelveticaNeue", sans-serif;
+                            font-weight: bold;
+                            color: black;
+
+                        }
+                    </style>
                         <fieldset id="unknown">
                             <label for="titleunk">Title</label>
                             <input type="text" class="form-control mb-3" id="titleunk" name="titleunk" placeholder="Enter the song's title">
