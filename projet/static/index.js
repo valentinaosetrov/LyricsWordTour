@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    // When the image with id "speaknow" is clicked, show an alert
     $("#debut").click(function(){
         var album = "debut";
         localStorage.setItem("album", album);
