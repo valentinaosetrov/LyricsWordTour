@@ -14,34 +14,38 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent_Marker">
 
-
-
-
-	</head>
-	<body>
         <style>
+            h2 {
+                /*outline the text*/ 
+                color:antiquewhite;
+                text-shadow: 5cm;
+            }
+            mark {
+                background-color: rgb(205, 212, 212);
+                border-radius: 5cm;
+            }
             body {
                 background-image: url("https://i.pinimg.com/originals/e8/7e/b4/e87eb4a310de48ea4ff840f685a7ee70.jpg");
                 background-size: cover;
             }
         </style>
+	</head>
+	<body>
+        <div class="mb-5">
+			<nav class="navbar navbar-light bg-light text-center">
+				<div class="container d-flex justify-content-center align-items-center">
+				  <img src="../static/logo.png" id="logo" alt="Logo" width="80px" height="80px" class="d-inline-block align-top">
+				  <h1 class="p-3">Lyrics Wor(L)d Tour</h1>
+				</div>
+			</nav>
+		</div>
         <div class="container mt-3 mb-3 text-center">
-            <h2>
-                <style>
-                    h2 {
-                        /*outline the text*/ 
-                        color:antiquewhite;
-                        text-shadow: 5cm;
-                    }
-                    mark {
-                        background-color: rgb(205, 212, 212);
-                        border-radius: 5cm;
-                    }
-                </style>
-                <mark>Choose a song</mark></h2>
             <form action="/submit" method="post">
                 <!-- ici nous créons une fieldset pour chaque album -->
                 {% if clicked_image_id == "Debut" %}
+                    <h2>
+                        <mark>Choose a song</mark>
+                    </h2>
                     <fieldset id="debut">
                         <!-- ici nous afficherons les chansons présentes dans la base de données -->
                         <ul>
@@ -74,6 +78,9 @@
                         </ul>
                     </fieldset>
                 {% elif clicked_image_id == "Fearless" %}
+                <h2>
+                    <mark>Choose a song</mark>
+                </h2>
                     <fieldset id="fearless">
                         <ul>
                             {% for song in songs %}
@@ -105,6 +112,9 @@
                         </ul>
                     </fieldset>
                 {% elif clicked_image_id == "Speak Now" %}
+                <h2>
+                    <mark>Choose a song</mark>
+                </h2>
                     <fieldset id="speaknow">
                         <ul>
                             {% for song in songs %}
@@ -136,11 +146,16 @@
                         </ul>
                     </fieldset>
                 {% elif clicked_image_id == "Red" %}
+                <h2>
+                    <mark>Choose a song</mark>
+                </h2>
                 <fieldset id="red">
                     <ul>
                         {% for song in songs %}
                             {% if song.album == clicked_image_id %}
-                                <input class="form-check-input" type="radio" name="title" value="{{ song.title }}"><label>{{ song.id }} - {{ song.title }}</label>
+                            <div class="form-check d-flex align-items-center justify-content-center">
+                                <input class="form-check-input" type="radio" id="{{ song.id }}" name="title" value="{{ song.title }}"><label for="{{ song.id }}">{{ song.id }} - {{ song.title }}</label>
+                            </div>
                                 <style>
                                     #red {
                                         background-image: url("https://www.rollingstone.com/wp-content/uploads/2018/06/rs-183518-169500230.jpg?w=1581&h=1054&crop=1");
@@ -167,6 +182,9 @@
                     </ul>
                 </fieldset>
                 {% elif clicked_image_id == "1989" %}
+                <h2>
+                    <mark>Choose a song</mark>
+                </h2>
                 <fieldset id="1989">
                     <ul>
                         {% for song in songs %}
@@ -198,6 +216,9 @@
                     </ul>
                 </fieldset>
                 {% elif clicked_image_id == "Reputation" %}
+                <h2>
+                    <mark>Choose a song</mark>
+                </h2>
                     <fieldset id="reputation">
                         <ul>
                             {% for song in songs %}
@@ -208,6 +229,9 @@
                         </ul>
                     </fieldset>
                 {% elif clicked_image_id == "Lover" %}
+                <h2>
+                    <mark>Choose a song</mark>
+                </h2>
                     <fieldset id="lover">
                         <ul>
                             {% for song in songs %}
@@ -218,6 +242,9 @@
                         </ul>
                     </fieldset>
                     {% elif clicked_image_id == "Folklore" %}
+                    <h2>
+                        <mark>Choose a song</mark>
+                    </h2>
                         <fieldset id="folklore">
                             <ul>
                                 {% for song in songs %}
@@ -228,6 +255,9 @@
                             </ul>
                         </fieldset>
                     {% elif clicked_image_id == "Evermore" %}
+                    <h2>
+                        <mark>Choose a song</mark>
+                    </h2>
                         <fieldset id="evermore">
                             <ul>
                                 {% for song in songs %}
@@ -238,6 +268,9 @@
                             </ul>
                         </fieldset>
                     {% elif clicked_image_id == "Midnights" %}
+                    <h2>
+                        <mark>Choose a song</mark>
+                    </h2>
                         <fieldset id="midnights">
                             <ul>
                                 {% for song in songs %}
@@ -248,8 +281,13 @@
                             </ul>
                         </fieldset>
                     {% else %}
+                    <h2>
+                        <mark>Write some lyrics</mark>
+                    </h2>
                         <fieldset id="unknown">
-                            <textarea class="form-control" id="personalised" type="textarea" name="personalised" rows="10" cols="50" placeholder="Écris ton chanson!"></textarea>
+                            <label for="titleunk">Title</label>
+                            <input type="text" class="form-control mb-3" id="titleunk" name="titleunk" placeholder="Enter the song's title">
+                            <textarea class="form-control" id="personalised" type="textarea" name="personalised" rows="10" cols="50" placeholder="Enter the lyrics!"></textarea>
                         </fieldset>
                     {% endif %}
                     <br>

@@ -112,6 +112,7 @@ async def submit_form(request: Request):
     form_data = await request.form() 
     t = form_data.get("title")
     if t == None : 
+        t = form_data.get("titleunk")
         paroles = form_data.get("personalised")
         paroles = add_hashtag(paroles)
     else: 
