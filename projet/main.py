@@ -18,12 +18,12 @@ import spacy
 
 app = FastAPI()
 
-# Function to extract places from lyrics
+# extraire les lieux d'une chanson
 def extract_places(lyrics):
     places = re.findall(r'#(.*?)#', lyrics)
     return places
 
-# Function to add hashtags to lyrics
+# rajouter des hashtags aux lieux
 def add_hashtag(lyrics):
     nlp = spacy.load("en_core_web_sm")
     paroles = []
@@ -45,7 +45,7 @@ def add_hashtag(lyrics):
         paroles.append(modif)
     return paroles
 
-# Function to geocode a place using OpenStreetMap Nominatim API
+# géolocaliser un lieu avec OpenStreetMap Nominatim API
 def geocode_place(place):
     if place.lower() == "l.a." or place.lower() == "la":
         place = "Los Angeles"
@@ -99,16 +99,16 @@ async def click_image(request: Request):
 async def song_list(request: Request):
     return templates.TemplateResponse("song_list.html", {"songs": SONG_DATABASE, "clicked_image_id": clicked_image_id, "request" : request})
 
-# Define the route to serve the lyrics page
+# vers la page lyrics.html
 @app.get("/lyrics", response_class=HTMLResponse)
 async def lyrics(request: Request):
     return templates.TemplateResponse("lyrics.html", {"request": request})
 
-# Define the route to handle form submission
+# pour soumettre le formulaire
 @app.post("/submit")
 async def submit_form(request: Request):
     punct = [",", "?"]
-    # Redirect to the lyrics.html page with the checkbox value
+    # rediriger vers lyrics.html avec la valeur de checkbox
     form_data = await request.form() 
     t = form_data.get("title")
     if t == None : 
