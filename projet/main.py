@@ -33,15 +33,10 @@ def add_hashtag(lyrics):
         doc = nlp(line)
         modif = line
         for ent in doc.ents:
-            if len(lines) < 2 :
-                if ent.label_ == "GPE" and ent.text not in t : 
-                    entity_modif = "#" + ent.text + "#"
-                    modif = modif.replace(ent.text, entity_modif)
-                    t.append(ent.text)
-            else : 
-                if ent.label_ == "GPE" : 
-                    entity_modif = "#" + ent.text + "#"
-                    modif = modif.replace(ent.text, entity_modif)
+            if ent.label_ == "GPE" and ent.text not in t : 
+                entity_modif = "#" + ent.text + "#"
+                modif = modif.replace(ent.text, entity_modif)
+                t.append(ent.text)
         paroles.append(modif)
     return paroles
 
